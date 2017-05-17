@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './AppComponent.jsx';
+import Hello from './Hello.jsx';
+import Button from './Button.jsx';
 import css from './app.scss';
 
-//var thisThing = require('./another');
+const element = (
+		<div>
+			<Hello name="Lorena"/>
+			<Button/>
+		</div>
+	);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+	element, 
+	document.getElementById('root')
+);
