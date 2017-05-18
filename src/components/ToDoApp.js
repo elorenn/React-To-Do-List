@@ -53,7 +53,7 @@ class ToDoApp extends React.Component {
 	render() {
 		let visibleToDos = this.visibleToDos();
 		return (
-			<div>
+			<div className="app-container">
 				<h2>do.</h2>
 				<form 
 					onSubmit = {
