@@ -16,7 +16,6 @@ class VisibleToDoList extends React.Component {
 	render() {
 		return (
 			<div>
-				<h3>{this.props.visibilityFilter.replace("_", " ")}</h3>
 				{
 					this.props.visibleToDos.length > 0 ? (
 							<ul>
@@ -33,7 +32,7 @@ class VisibleToDoList extends React.Component {
 								)}
 							</ul>
 						) : (
-							"You're all caught up!"
+							""
 						)
 
 				}
