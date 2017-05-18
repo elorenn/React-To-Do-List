@@ -46,32 +46,40 @@ class ToDoApp extends React.Component {
 		}
 	}
 
+/* 
+	Use the `ref` callback to store a reference to the text input 
+	DOM element in an instance field (for example, this._toDoInputField):
+*/
 	render() {
 		let visibleToDos = this.visibleToDos();
 		return (
 			<div>
-				<h2>Get This Done:</h2>
-				<input
-					type = "text"
-					placeholder = "add a task..."
-					ref = {(c => this._toDoInputField = c)}
-				/>
-				<button 
-					onClick = {this.addToDoItem}>
-						Add
-				</button>
-				<VisibleToDoList
-					visibleToDos = {visibleToDos}
-					visibilityFilter = {this.state.visibilityFilter}
-					archiveToggleToDoItem = {this.archiveToggleToDoItem}
-					removeToDoItem = {this.removeToDoItem}
-				/>
+				<h2>do.</h2>
+				<form 
+					onSubmit = {
+						(e) => {
+							e.preventDefault();
+						}
+					}>
+					<input
+						type = "text"
+						placeholder = "add a task..."
+						ref = {
+							(input => this._toDoInputField = input)
+						}
+					/>
+					<button 
+						type = "submit"
+						onClick = {this.addToDoItem}>
+							+
+					</button>
+				</form>	
 				<div>
-					SHOW:
 					{
 						this.visibilityFilters.map (
 							visibilityFilter => 
 								<button
+									type = "button"
 									key = {visibilityFilter}
 									onClick = {this.changeVisibilityFilter}
 									data-id = {visibilityFilter}>
@@ -79,7 +87,13 @@ class ToDoApp extends React.Component {
 								</button>
 						)
 					}
-				</div>	
+				</div>
+				<VisibleToDoList
+					visibleToDos = {visibleToDos}
+					visibilityFilter = {this.state.visibilityFilter}
+					archiveToggleToDoItem = {this.archiveToggleToDoItem}
+					removeToDoItem = {this.removeToDoItem}
+				/>					
 			</div>
 		);
 	}
