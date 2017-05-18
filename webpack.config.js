@@ -1,11 +1,16 @@
 module.exports = {
-  entry: ['./app.js'],
+  entry: ['./src/main.js'],
   output: {
-    filename: "./bundle.js"
+    path: __dirname + '/dist',
+    publicPath: '/',
+    filename: "bundle.js"
   },
   watch: true,
   resolve:{
     extensions: ['.js', '.jsx', '.json']
+  },
+  devServer: {
+    contentBase: './dist',
   },
   module: {
   	rules: [
@@ -15,7 +20,7 @@ module.exports = {
   			use: {
   				loader: 'babel-loader',
   				options: {
-  					presets: [ "es2015" , "react" ]
+  					presets: [ "react" , "es2015", "stage-2" ]
   				}
   			}
   		},
