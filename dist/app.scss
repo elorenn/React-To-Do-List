@@ -1,8 +1,23 @@
 $grey: #d6d6d6;
 
 body {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	margin: 0;
 	height: 700px;
 	width: 100vw;
 	background-color: $grey;
+	background: linear-gradient(90deg, #38aecc 10%, #347fb9 90%);
 	color: #fff;
+}
+
+.app-container {
+    background-color: #fff;
+    color: darkslategrey;
+    min-height: 500px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f2f2f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e5e5e5, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
 }
