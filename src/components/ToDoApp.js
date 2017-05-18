@@ -6,7 +6,7 @@ class ToDoApp extends React.Component {
 		super();
 		this.visibilityFilters = ["ALL_TODOS", "LEFT_TODOS", "COMPLETED_TODOS"];
 		this.state = {
-			toDoList: this.props ? this.props.dataInterface.getAllToDoItems() : '',
+			toDoList: this.props ? this.props.dataInterface.getAllToDoItems() : [],
 			visibilityFilter: "ALL_TODOS"
 		};
 	}
