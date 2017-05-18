@@ -17,7 +17,7 @@ class SingleToDo extends React.Component {
 					type="checkbox"
 				/>
 				<label>
-					{this.props.text}{this.this.props.isDone ? ' - DONE' : ''}
+					{this.props.text}{this.props.isDone ? ' - DONE' : ''}
 				</label>
 				<button
 					data-id={this.props.toDoId}
