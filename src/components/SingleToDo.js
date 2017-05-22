@@ -19,7 +19,7 @@ class SingleToDo extends React.Component {
 						id = "taskCheckbox"
 					/>
 					<label
-						for = "taskCheckbox">
+						htmlFor = "taskCheckbox">
 					</label>
 				</div>	
 				<div>
