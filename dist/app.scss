@@ -1,6 +1,9 @@
 $grey: #d6d6d6;
 $main-color: #00ced1;
-$main-lighter: #4cdcde;
+$main-lighter: #32d7da;
+$main-lightest: #4cdcde;
+$main-bright: #05fbff;
+$main-dark: #00a4a7;
 
 body {
 	display: flex;
@@ -12,6 +15,7 @@ body {
 	background-color: #fff;
 	background: none;
 	font-family: sans-serif;
+	font-size: 16px;
 }
 
 .app-container {	
@@ -48,9 +52,10 @@ body {
 	    align-items: center;
 	    width: 90%;
 	    align-self: center;
+	    flex-grow: 1;
 	    .title {
 		    margin: 0;
-		    font-size: 35px;
+		    font-size: 2.2em;
 		    font-family: serif;
 		    cursor: default;
 		}
@@ -103,25 +108,33 @@ body {
 		    	outline: none;
 		    }
 		    &:hover {
-		    	background-color: $main-lighter;
+		    	background-color: $main-bright;
 		    }
 		}	
 	} 
 	.filter-nav {
-		width: 90%;
+		width: 100%;
 	    align-self: center;
 	    display: flex;
-	    justify-content: space-between;
-	    align-items: center;
+	    flex-grow: 1;
 	    button {
+	    	font-size: .85em;
 		    background-color: transparent;
 		    border: none;
-		    color: #e6e6e6;
+		    color: #bcfeff;
 		    cursor: pointer;
+		    flex-grow: 1;
+    		border-radius: 60% 60% 0px 0px;
+    		background-color: #03E9EC;
+    		box-shadow: 0 -5px 0 0 #06fbff, 0 -9px 0 0 #64fcff, 0 -13px 0 0 #04b9bb;
+    		&:hover {
+				background-color: #04F2F5;
+				color: #fff;
+    		}
    			&:focus {
 			    outline: 0;
 			    color: #fff;
-			    background-color: $main-lighter;
+			    background-color: $main-bright;
    			}
 	    }	    
 	}
@@ -184,7 +197,6 @@ body {
 		color: #e6e6e6;
 		-webkit-font-smoothing: antialiased;
 		font-weight: bold;
-		// box-shadow: 2px 2px 4px #cfcfcf;
 		&:before {
 			content: ' ';
 			position: absolute;
