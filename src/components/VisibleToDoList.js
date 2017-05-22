@@ -15,7 +15,7 @@ import SingleToDo from './SingleToDo';
 class VisibleToDoList extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="list-container">
 				{
 					this.props.visibleToDos.length > 0 ? (
 							<ul>
@@ -32,7 +32,10 @@ class VisibleToDoList extends React.Component {
 								)}
 							</ul>
 						) : (
-							""
+							<div className="paperclip-container">
+								<p className="speech-bubble">Nothing here!</p>
+								<img className="paperclip" src={'https://s-media-cache-ak0.pinimg.com/originals/50/fa/ce/50facebf9a3c8dfa632d99c60ed9909c.png'}></img>
+							</div>
 						)
 
 				}
