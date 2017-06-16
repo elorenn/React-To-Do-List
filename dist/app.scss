@@ -1,14 +1,15 @@
-$grey: #d6d6d6;
+$grey-light: #d6d6d6;
+$grey-dark: #666;
 $main-color: #00ced1;
 $main-lighter: #32d7da;
 $main-lightest: #4cdcde;
 $main-bright: #05fbff;
-$main-dark: #00a4a7;
+$main-dark: #04b9bb;
 
 body {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 	margin: 0;
 	height: 700px;
 	width: 100vw;
@@ -19,24 +20,53 @@ body {
 }
 
 .app-container {	
-    color: darkslategrey;
-    min-height: 568px;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
+	color: $grey-dark;
+	height: 568px;
+	width: 320px;
+	display: flex;
+	flex-direction: column;
 	background-color: hsla(0, 0%, 94%, 1);
 	box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 .checkbox-wrapper {
 	input[type=checkbox] {
+		cursor: pointer;
 		visibility: hidden;
+		position: absolute;
+	}
+	label {
+		height: 20px;
+		width: 20px;
+		position: relative;
+		border-radius: 50%;
+		background-color: #f0f0f0;
+		display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+		&:hover {
+			background-color: $grey-light;
+		}
+		&.to-do-label.done {
+			background-color: #06fbff;
+			&:hover {
+				background-color: #64fcff;
+			}
+		}
+		img {
+		    width: 70%;
+		}
 	}
 }
 
-
-
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
 
 .top-section {
     background-color: darkturquoise;
@@ -65,6 +95,7 @@ body {
 		    flex-direction: row;
 		    align-items: center;
 		    justify-content: flex-end;
+		    position: relative;
 		    &:hover {
 		    	input {
 		    		width: 158px;
@@ -74,17 +105,20 @@ body {
 		    }
 		}
 		input[type="text"] {
+    	font-size: .8em;
 			width: 38px;
-		    border: 2px solid #fff;
-		    border-radius: 50px;
-		    background-color: #fff;
-		    margin-right: -42px;
-		    height: 20px;
-			color: $grey;
+	    border: 2px solid #fff;
+	    border-radius: 50px;
+	    background-color: #fff;
+	    height: 20px;
+			color: #666;
+			position: absolute;
+    	z-index: 1;
+    	right: 0;
 		 	-webkit-transition: width 0.4s ease-in-out;
-    		transition: width 0.4s ease-in-out;
+    	transition: width 0.4s ease-in-out;
 			&::placeholder {
-				color: $grey;
+				color: $grey-light;
 
 			}
 			&:focus {
@@ -92,10 +126,13 @@ body {
 	 			width: 158px;
 	 			padding-left: 5px;
 	 			padding-right: 42px;
+	 			& ~ button.add-button {
+					background-color: $main-bright;
+				}
 			}
 		}
 		button.add-button {
-		    background-color: $main-color;
+		    background-color: $main-dark;
 		    border: none;
 		    border-radius: 50px;
 		    height: 22px;
@@ -103,11 +140,13 @@ body {
 		    color: #fff;
 		    font-weight: bold;
 		    cursor: pointer;
-		    z-index: 1;
+		    z-index: 2;
+  			position: absolute;
+  			right: 2px;
 		    &:focus {
 		    	outline: none;
 		    }
-		    &:hover {
+		    &:hover, &:active, &:focus {
 		    	background-color: $main-bright;
 		    }
 		}	
@@ -126,12 +165,12 @@ body {
 		    flex-grow: 1;
     		border-radius: 60% 60% 0px 0px;
     		background-color: #03E9EC;
-    		box-shadow: 0 -5px 0 0 #06fbff, 0 -9px 0 0 #64fcff, 0 -13px 0 0 #04b9bb;
+    		box-shadow: 0 -5px 0 0 #06fbff, 0 -9px 0 0 #64fcff, 0 -13px 0 0 $main-dark;
     		&:hover {
 				background-color: #04F2F5;
 				color: #fff;
     		}
-   			&:focus {
+   			&:focus, &:active, &.active {
 			    outline: 0;
 			    color: #fff;
 			    background-color: $main-bright;
@@ -141,6 +180,7 @@ body {
 }
 
 .list-container {
+    font-size: .8em;
     box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f2f2f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e5e5e5, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
     width: 90%;
     min-height: 350px;
@@ -149,19 +189,33 @@ body {
     background-color: #fff;
     align-self: center;
     display: flex;
-    margin-top: 50px;
+    // margin-top: 50px;
     ul {
     	padding: 0;
     	width: 100%;
 	}
 	li {
+		cursor: default;
 		list-style: none;
 		display: flex;
-    	justify-content: space-between;
+    	justify-content: flex-start;
 		align-items: center;
 	    height: 50px;
-
-	    border-bottom: 2px solid skyblue;
+	    border-bottom: 2px solid #bcfeff;
+	    &:last-child {
+	    	margin-bottom: 20px;
+	    }
+		p.to-do-text {
+		    margin: 0;
+		    margin-left: 40px;
+		    align-self: flex-end;
+		    flex-grow: 2;
+		    font-size: 1em;
+		    &.done {
+		    	color: $grey-light;
+		    	text-decoration: line-through;
+		    }
+		}
 	}
 	li:hover {
     	box-shadow: 7px 7px 28px rgba(0,0,0,0.10);
@@ -174,10 +228,9 @@ body {
 	    left: 30px;
 	    bottom: 0;
 	    border: 1px solid;
-	    border-color: transparent #efe4e4;
+	    border-color: transparent #f7c9c9;
 	}
 }
-
 
 .paperclip-container {
 	align-self: center;
@@ -193,8 +246,8 @@ body {
 		height: 80px;
 		text-align: center;
 		line-height: 80px;
-		border: 3px solid #e1e1e1;
-		color: #e6e6e6;
+		border: 3px solid $grey-light;
+		color: $grey-light;
 		-webkit-font-smoothing: antialiased;
 		font-weight: bold;
 		&:before {
@@ -205,7 +258,7 @@ body {
 		    left: 73px;
 		    top: 80px;
 		    border: 18.5px solid;
-		    border-color: #e1e1e1 transparent transparent #e1e1e1;			
+		    border-color: $grey-light transparent transparent $grey-light;			
 		}
 		&:after {
 		    content: ' ';
@@ -219,6 +272,22 @@ body {
 		}
 	}
 }
+
+button.button-remove {
+	border: none;
+	background-color: transparent;
+	color: $grey-light;
+	cursor: pointer;
+	&:focus, &:hover {
+		outline: 0;
+		color: $grey-dark;
+	}	
+	img {
+		height: 20px;
+	}
+}
+
+
 
 
 
