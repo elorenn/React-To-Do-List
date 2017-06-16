@@ -16,19 +16,22 @@ class SingleToDo extends React.Component {
 						checked={this.props.isDone}
 						onChange={this.props.archiveToggleToDoItem}
 						type="checkbox"
-						id = "taskCheckbox"
+						id = {'taskCheckbox' + this.props.toDoId}
 					/>
 					<label
-						htmlFor = "taskCheckbox">
+						className={this.props.isDone ? 'to-do-label done' : 'to-do-label'}
+						htmlFor = {'taskCheckbox' + this.props.toDoId}>
+						<img className="checkmark-img" src={'check.png'}></img>
 					</label>
 				</div>	
-				<div>
-					{this.props.text}{this.props.isDone ? ' - DONE' : ''}
-				</div>
+				<p className={this.props.isDone ? 'to-do-text done' : 'to-do-text'}>
+					{this.props.text}
+				</p>
 				<button
+					className="button-remove"
 					data-id={this.props.toDoId}
 					onClick={this.props.removeToDoItem}
-				> x
+				>X
 				</button>
 			</li>
 		);

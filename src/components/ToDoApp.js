@@ -91,22 +91,26 @@ class ToDoApp extends React.Component {
 								this.visibilityFilters.map (
 									visibilityFilter => 
 										<button
+											className = {`${visibilityFilter} ${(this.state.visibilityFilter == visibilityFilter) ? 'active' : ''}`}
 											type = "button"
 											key = {visibilityFilter}
 											onClick = {this.changeVisibilityFilter}
-											data-id = {visibilityFilter}>
+											data-id = {visibilityFilter}
+											>
 												{visibilityFilter}
 										</button>
 								)
 							}
 						</div>
 					</div>	
-					<VisibleToDoList
-						visibleToDos = {visibleToDos}
-						visibilityFilter = {this.state.visibilityFilter}
-						archiveToggleToDoItem = {this.archiveToggleToDoItem}
-						removeToDoItem = {this.removeToDoItem}
-					/>					
+					<div className="bottom-section">
+						<VisibleToDoList
+							visibleToDos = {visibleToDos}
+							visibilityFilter = {this.state.visibilityFilter}
+							archiveToggleToDoItem = {this.archiveToggleToDoItem}
+							removeToDoItem = {this.removeToDoItem}
+						/>
+					</div>						
 				</div>
 		);
 	}

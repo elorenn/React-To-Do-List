@@ -34,7 +34,7 @@ class VisibleToDoList extends React.Component {
 						) : (
 							<div className="paperclip-container">
 								<p className="speech-bubble">Nothing here!</p>
-								<img className="paperclip" src={'https://s-media-cache-ak0.pinimg.com/originals/50/fa/ce/50facebf9a3c8dfa632d99c60ed9909c.png'}></img>
+								<img className="paperclip" src={'paperclip.png'}></img>
 							</div>
 						)
 
